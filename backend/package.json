@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Este módulo corresponde a la **API del bot comercial de Riscales Alimentación**, desarrollado en **Node.js + Express**. Gestiona la lógica de negocio relacionada con los productos gourmet, categorías y pedidos de simulación.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "echo 'No hay código aún para analizar'",
+    "test": "echo 'Sin pruebas aún'"  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "eslint": "^9.23.0",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^16.0.0",
+    "typescript-eslint": "^8.28.0"
+  }
+}
