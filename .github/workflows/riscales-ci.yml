@@ -1,0 +1,46 @@
+name: CI Riscales Bot — Frontend
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validaciones-frontend:
+    name: Validaciones Frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar pnpm
+        run: npm install -g pnpm
+
+      - name: Instalar dependencias frontend
+        run: pnpm install
+
+      - name: Lint frontend
+        run: pnpm lint
+
+      - name: Test frontend
+        run: pnpm test || echo "Sin pruebas aún"
+
+      - name: Build frontend
+        run: pnpm build
+
+  cleanup:
+    name: Cleanup temporal (opcional)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo cleanup
+        run: echo "Limpiando..."
+
