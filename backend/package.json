@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Este módulo corresponde a la API del bot comercial de Riscales Alimentación, desarrollado en Node.js + Express. Gestiona la lógica de negocio relacionada con las integraciones conversacionales.",
+  "description": "Este módulo corresponde a la API del bot comercial de Riscales Alimentación, desarrollado en Node.js + Express. Gestiona la lógica de negocio relacionada con las integraciones.",
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
@@ -11,8 +11,8 @@
     "test": "echo 'Sin pruebas aún...'"
   },
   "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "author": "Neil Muñoz",
+  "license": "Apache 2.0",
   "dependencies": {
     "dotenv": "^16.4.0",
     "express": "^4.19.2",
@@ -23,9 +23,10 @@
     "@eslint/js": "^9.23.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.30",
-    "@typescript-eslint/eslint-plugin": "^8.28.0",
-    "@typescript-eslint/parser": "^8.28.0",
-    "eslint": "^9.23.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.32.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
   }
