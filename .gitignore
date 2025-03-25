@@ -43,3 +43,6 @@ coverage/
 # 🧪 VSCode testing
 .vscode-test
 
+#Credentials
+/credentials/credentials.json
+
