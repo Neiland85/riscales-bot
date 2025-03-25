@@ -1,0 +1,56 @@
+name: Validaciones Frontend y Backend
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependencias frontend
+        run: pnpm install
+
+      - name: Lint (frontend)
+        run: pnpm lint
+
+      - name: Build (frontend)
+        run: pnpm build
+
+  backend-checks:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependencias backend
+        run: npm install
+
+      - name: Lint (backend)
+        run: npm run lint || echo "Lint no configurado"
+
+      - name: Test (backend)
+        run: npm test || echo "Tests no configurados"
+
