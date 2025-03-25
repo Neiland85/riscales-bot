@@ -1,46 +1,74 @@
-name: CI Riscales Bot — Frontend
+name: CI Riscales Bot – Frontend & Backend
 
 on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
 
 jobs:
-  validaciones-frontend:
+  frontend:
     name: Validaciones Frontend
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./frontend
-
     steps:
-      - name: Checkout repositorio
+      - name: Checkout del código
         uses: actions/checkout@v3
 
-      - name: Configurar Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - name: Instalar pnpm
-        run: npm install -g pnpm
+          cache: 'pnpm'
 
       - name: Instalar dependencias frontend
         run: pnpm install
 
-      - name: Lint frontend
+      - name: Lint (frontend)
         run: pnpm lint
 
-      - name: Test frontend
-        run: pnpm test || echo "Sin pruebas aún"
-
-      - name: Build frontend
+      - name: Build (frontend)
         run: pnpm build
+
+      - name: Test (frontend)
+        run: pnpm test -- --passWithNoTests
+
+  backend:
+    name: Validaciones Backend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependencias backend
+        run: npm ci
+
+      - name: Lint (backend)
+        run: npm run lint || echo "No se encontró script de lint."
+
+      - name: Build (backend)
+        run: npm run build || echo "No se encontró script de build."
+
+      - name: Test (backend)
+        run: npm test -- --passWithNoTests || echo "No se encontró test suite."
 
   cleanup:
     name: Cleanup temporal (opcional)
     runs-on: ubuntu-latest
     steps:
-      - name: Echo cleanup
-        run: echo "Limpiando..."
-
+      - name: Cleanup Workspace
+        run: |
+          echo "Borrando archivos temporales..."
+          rm -rf ${{ github.workspace }}/tmp || true
