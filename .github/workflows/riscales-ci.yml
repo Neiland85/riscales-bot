@@ -65,17 +65,3 @@ jobs:
       - name: Test backend
         run: pnpm test
 
-  cleanup:
-    name: Cleanup temporal (opcional)
-    runs-on: ubuntu-latest
-    steps:
-<<<<<<< HEAD
-      - name: Cleanup Workspace
-        run: |
-          echo "Borrando archivos temporales..."
-          rm -rf ${{ github.workspace }}/tmp || true
-=======
-      - name: Mostrar estructura del repo
-        run: ls -la
-
->>>>>>> 3f6d310 (Fix: Instalar pnpm para validaciones en frontend y backend)
