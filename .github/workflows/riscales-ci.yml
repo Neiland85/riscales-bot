@@ -1,10 +1,7 @@
-name: CI Riscales Bot – Frontend & Backend
+name: CI Riscales Bot — Frontend & Backend
 
 on:
   pull_request:
-    branches:
-      - main
-  push:
     branches:
       - main
 
@@ -15,27 +12,30 @@ jobs:
     defaults:
       run:
         working-directory: ./frontend
+
     steps:
-      - name: Checkout del código
+      - name: Checkout repositorio
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm'
+
+      - name: Instalar pnpm
+        run: npm install -g pnpm
 
       - name: Instalar dependencias frontend
         run: pnpm install
 
-      - name: Lint (frontend)
+      - name: Lint frontend
         run: pnpm lint
 
-      - name: Build (frontend)
-        run: pnpm build
+      - name: Test frontend
+        run: pnpm test
 
-      - name: Test (frontend)
-        run: pnpm test -- --passWithNoTests
+      - name: Build frontend
+        run: pnpm build
 
   backend:
     name: Validaciones Backend
@@ -43,32 +43,39 @@ jobs:
     defaults:
       run:
         working-directory: ./backend
+
     steps:
-      - name: Checkout del código
+      - name: Checkout repositorio
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
+      - name: Instalar pnpm
+        run: npm install -g pnpm
+
       - name: Instalar dependencias backend
-        run: npm ci
+        run: pnpm install
 
-      - name: Lint (backend)
-        run: npm run lint || echo "No se encontró script de lint."
+      - name: Lint backend
+        run: pnpm lint
 
-      - name: Build (backend)
-        run: npm run build || echo "No se encontró script de build."
-
-      - name: Test (backend)
-        run: npm test -- --passWithNoTests || echo "No se encontró test suite."
+      - name: Test backend
+        run: pnpm test
 
   cleanup:
     name: Cleanup temporal (opcional)
     runs-on: ubuntu-latest
     steps:
+<<<<<<< HEAD
       - name: Cleanup Workspace
         run: |
           echo "Borrando archivos temporales..."
           rm -rf ${{ github.workspace }}/tmp || true
+=======
+      - name: Mostrar estructura del repo
+        run: ls -la
+
+>>>>>>> 3f6d310 (Fix: Instalar pnpm para validaciones en frontend y backend)
