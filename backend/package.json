@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Este módulo corresponde a la API del bot comercial de Riscales Alimentación, desarrollado en Node.js + Express. Gestiona la lógica de negocio relacionada con las integraciones.",
   "main": "dist/index.js",
-  "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "lint": "eslint ./src --ext .ts",
-    "test": "echo 'Sin pruebas aún...'"
-  },
+"scripts": {
+  "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+  "build": "tsc",
+  "start": "node dist/index.js",
+  "lint": "eslint ./src --ext .ts",
+  "test": "jest --detectOpenHandles --forceExit --coverage"
+},
   "keywords": [],
   "author": "Neil Muñoz",
   "license": "Apache 2.0",
@@ -22,11 +22,16 @@
   "devDependencies": {
     "@eslint/js": "^9.23.0",
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.14",
     "@types/node": "^20.11.30",
+    "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.32.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.3.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
   }
