@@ -64,10 +64,4 @@ jobs:
 
       - name: Test backend
         run: pnpm test
-  cleanup:
-    name: Cleanup temporal (opcional)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo cleanup
-        run: echo "Limpiando..."
 
