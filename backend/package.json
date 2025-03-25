@@ -16,6 +16,7 @@
   "dependencies": {
     "dotenv": "^16.4.0",
     "express": "^4.19.2",
+    "globals": "^14.0.0",
     "googleapis": "^148.0.0"
   },
   "devDependencies": {

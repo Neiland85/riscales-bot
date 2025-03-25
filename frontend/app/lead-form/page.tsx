@@ -71,7 +71,8 @@ export default function LeadFormPage() {
         onChange={(e) => setPhone(e.target.value)}
       />
 
-      <button
+<button
+        type="button"
         className={`w-full py-2 rounded text-white ${
           loading ? 'bg-gray-500 cursor-wait' : 'bg-black hover:bg-gray-800'
         }`}
