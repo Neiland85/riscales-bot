@@ -1,82 +1,109 @@
-# 🛒 riscales-bot · Asistente Comercial Inteligente para Riscales Alimentación
+# 🤖 Riscales Bot – Asistente Comercial Automatizado
 
-![Integrabot.net](https://integrabot.net/assets/integrabot-logo-black.png)
-
-**riscales-bot** es una aplicación web desarrollada para **Riscales Alimentación**, especializada en productos gourmet como jamones, quesos, aceites, vinos y más. Este bot permite a clientes profesionales (restaurantes, tiendas, hoteles) realizar **pedidos simulados** de forma conversacional e interactiva.
-
-🧠 Potenciado por [Integrabot.net](https://integrabot.net)  
-📦 Repositorio mantenido por [@Neiland85](https://github.com/Neiland85)
+Este proyecto implementa un asistente conversacional comercial para **Riscales Alimentación**, que permite recopilar leads desde un formulario web, enviarlos por WhatsApp y almacenarlos automáticamente en **Google Sheets**.
 
 ---
 
-## ✨ Características
+## 📦 Tecnologías Utilizadas
 
-- Frontend en **React + Tailwind CSS**
-- Backend en **Node.js + Express**
-- Selector de productos por categorías (jamones, quesos, vinos, etc.)
-- Visualización con imágenes de alta calidad por categoría
-- Resumen de pedido y simulación de envío por WhatsApp
-- Preparado para conexión a APIs reales (productos, precios, stock)
-- Estructura limpia para despliegue en **Vercel** y futuras integraciones
+- **Frontend**: Next.js + TypeScript + Tailwind (v0.dev)
+- **Backend**: Node.js + Express + TypeScript
+- **Base de datos**: Google Sheets (API REST con autenticación JWT)
+- **Mensajería**: WhatsApp (link directo con número prellenado)
+- **CI/CD**: GitHub Actions para validaciones automáticas
 
 ---
 
-## 📁 Estructura del proyecto
+## 🧩 Estructura del Proyecto
 
-riscales-bot/ │ ├── frontend/ ← App visual en React ├── backend/ ← API en Node.js para productos/pedidos ├── .gitignore ├── LICENSE └── README.md
+riscales-bot/ ├── backend/ │ ├── src/ │ │ ├── controllers/ │ │ ├── routes/ │ │ ├── middlewares/ │ │ └── services/ │ ├── .env │ └── eslint.config.mjs ├── frontend/ │ └── app/lead-form/ ├── .github/ │ └── workflows/ │ └── riscales-ci.yml
 
 
 ---
 
-## 🚀 Cómo levantar el proyecto
+## 🚀 Instalación Local
 
-### Requisitos previos
-- Node.js ≥ 18
-- pnpm (recomendado)
+### Requisitos
 
-### Clonar el repositorio
+- Node.js 18+
+- `pnpm` instalado globalmente
+- Cuenta de Google Cloud + credenciales JWT
+- Archivo `.env` con el ID de tu Google Spreadsheet
+
+### Clonación e instalación
+
 ```bash
 git clone https://github.com/Neiland85/riscales-bot.git
 cd riscales-bot
 
-🔧 Frontend
-
-cd frontend
+# Frontend
 pnpm install
 pnpm dev
 
-    Accede en http://localhost:5173
-
-🔧 Backend
-
+# Backend
 cd backend
 pnpm install
 pnpm dev
 
-    API en http://localhost:3000/api/products (mock temporal)
+🔒 Variables de Entorno (.env)
 
-🧩 Próximas funcionalidades
+Crea un archivo .env en la carpeta backend/ con el siguiente contenido:
 
-    Conexión real con catálogo dinámico y API de precios
+GOOGLE_SPREADSHEET_ID=1N1v0aWxdJHHBkTU3emLUIhjcpLAqCsFeQlflef1lQHM
+PORT=3001
 
-    Generación automática de presupuestos
+Las credenciales del servicio deben colocarse en backend/credentials/service-account.json (este archivo no se sube al repo por seguridad).
+🧪 Pruebas
 
-    Envío de pedidos reales por WhatsApp
+Para ejecutar pruebas unitarias en backend (si están configuradas):
 
-    Análisis de datos con BigQuery para estrategia SEO
+cd backend
+pnpm test
 
-    Dashboard de gestión para el cliente
+🌐 Funcionalidad
 
-⚡ Licencia
+Formulario en /lead-form para introducir nombre y teléfono
 
-Distribuido bajo licencia Apache 2.0 · ¡Hazlo crecer!
-🤝 Colabora
+Validación de datos (nombre, teléfono)
 
-¿Quieres colaborar, integrarte o aprender más?
+Envío automático a Google Sheets vía API
 
-📩 Contacto: https://integrabot.net
-👨‍💻 Dev: https://github.com/Neiland85
+Redirección a WhatsApp con mensaje personalizado
 
-💡 “El futuro del comercio B2B pasa por la automatización inteligente.”
+    Validaciones CI con GitHub Actions en pull requests
 
+👥 Contribuir
+
+    Haz un fork de este repositorio.
+
+    Crea tu rama: git checkout -b feature/nueva-funcionalidad.
+
+    Realiza tus cambios y haz commit: git commit -m 'feat: mejora interesante'.
+
+    Sube tu rama: git push origin feature/nueva-funcionalidad.
+
+    Abre un Pull Request y describe tu mejora.
+
+🧠 Futuras Mejoras
+
+Integración con una base de datos real (PostgreSQL / MongoDB)
+
+Panel de administración con métricas y seguimiento de leads
+
+Notificaciones por email al recibir nuevos leads
+
+Protección con reCAPTCHA
+
+    Multilingüe
+
+👨‍💻 Autor
+
+Desarrollado por Neil Muñoz (Neiland85) — freelance developer & tech entrepreneur.
+Contacto: integrabot.nmunoz@gmail.com
+
+📄 Licencia
+
+Este proyecto está bajo la licencia Apache 2.0.  
+Puedes usarlo, modificarlo y distribuirlo libremente siempre que respetes los términos de la licencia.  
+Más info: [https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
 

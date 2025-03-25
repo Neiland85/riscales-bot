@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "lint": "eslint ./src --ext .ts",
-    "test": "echo 'Sin pruebas aún...'"
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
