@@ -1,17 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Este módulo corresponde a la API del bot comercial de Riscales Alimentación, desarrollado en Node.js + Express. Gestiona la lógica de negocio relacionada con las integraciones conversacionales.",
+  "description": "Este módulo corresponde a la API del bot comercial de Riscales Alimentación, desarrollado en Node.js + Express. Gestiona la lógica de negocio relacionada con las integraciones [...]",
   "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
     "lint": "eslint ./src --ext .ts",
-     chore/documentacion-y-plantillas
-    "test": "vitest"
     "test": "echo 'Sin pruebas aún...'"
-     main
   },
   "keywords": [],
   "author": "",
