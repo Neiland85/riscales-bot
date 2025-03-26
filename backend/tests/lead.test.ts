@@ -5,7 +5,7 @@ describe('Lead API', () => {
   it('debería devolver 200 con lead válido', async () => {
     const response = await request(app).post('/api/lead').send({
       name: 'Neil',
-      phone: '600123456',
+      phone: '613722441',
     });
 
     expect(response.statusCode).toBe(200);
@@ -14,7 +14,7 @@ describe('Lead API', () => {
 
   it('debería devolver 400 si falta el nombre', async () => {
     const response = await request(app).post('/api/lead').send({
-      phone: '600123456',
+      phone: '613722441',
     });
 
     expect(response.statusCode).toBe(400);
